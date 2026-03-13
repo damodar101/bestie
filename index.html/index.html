@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bestie</title>
+
+<style>
+
+body{
+background:#ff4d6d;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+width:450px;
+height:420px;
+background:white;
+text-align:center;
+border-radius:15px;
+position:relative;
+padding-top:20px;
+}
+
+#gif{
+width:200px;
+margin-bottom:10px;
+}
+
+h2{
+color:#ff4d6d;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin:10px;
+}
+
+.yes{
+background:#ff4d6d;
+color:white;
+}
+
+.no{
+background:black;
+color:white;
+position:absolute;
+}
+
+#videoBox{
+display:none;
+margin-top:10px;
+}
+
+video{
+width:90%;
+border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<img id="gif" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHdpODNobGNvcHp3bGV1dHVuejIweGo0bXc0Nzg5OXd3bHN2ZnFyNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1JmGiBtqTuehfYxuy9/giphy.gif" alt="I love you❤️">
+
+<h2 id="msg">Will you be my Bestie? ❤️</h2>
+
+<button class="yes" id="yesBtn" onclick="yesClick()">Yes</button>
+<button class="no" id="noBtn" onclick="noClick()">No</button>
+
+<div id="videoBox">
+<h3>You made me the happiest person ❤️</h3>
+
+<img id="gif" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG56dW94d3pwNW45NXRhcDg4NnNhbnZlZjN4bmtjYTk5NThmZWdkZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KmxmoHUGPDjfQXqGgv/giphy.gif" alt="I love you too❤️">
+
+</div>
+
+</div>
+
+<script>
+
+const noBtn = document.getElementById("noBtn");
+const box = document.querySelector(".box");
+const msg = document.getElementById("msg");
+
+let noCount = 0;
+
+const messages = [
+"Are you sure? 😢",
+"Really sure? 🥺",
+"Think again please ❤️",
+"You don't want to be my Valentine? 💔",
+"Come on... give me a chance 😭",
+"I promise I will make you smile 😊",
+"I will bring chocolate 🍫",
+"I will bring flowers 🌹",
+"I will bring ice cream 🍦",
+"Still no? 😔",
+"Please don't break my heart 💔",
+"You are very special to me ❤️",
+"I really like you 🥺",
+"Just think one more time...",
+"Are you really really sure? 😭",
+"Last chance... please say yes ❤️"
+];
+
+function moveButton(){
+
+const boxWidth = box.clientWidth - 100;
+const boxHeight = box.clientHeight - 60;
+
+const randomX = Math.random() * boxWidth;
+const randomY = Math.random() * boxHeight;
+
+noBtn.style.left = randomX + "px";
+noBtn.style.top = randomY + "px";
+}
+
+function noClick(){
+
+if(noCount < messages.length){
+msg.innerText = messages[noCount];
+}
+
+noCount++;
+
+moveButton();
+}
+
+function yesClick(){
+
+msg.innerText = "Yay! ❤️ You said YES!";
+
+document.getElementById("yesBtn").style.display="none";
+noBtn.style.display="none";
+document.getElementById("gif").style.display="none";
+
+document.getElementById("videoBox").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
